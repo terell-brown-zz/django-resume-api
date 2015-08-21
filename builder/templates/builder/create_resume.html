@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action='{% url "new_resume" %}' method='POST'>
+{% csrf_token %}
+
+{{form.as_table}}
+
+<input type='submit' name='sub' value = 'Save' >
+
+</form>
+
+{% endblock content %}

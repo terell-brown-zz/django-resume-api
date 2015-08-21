@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{resume.context}}</h1>
+
+<div class="btn-group-vertical" role="group" aria-label="...">
+<a href = 'about/'>Edit About Section</a><br>
+<a href = 'contact/'>Edit Contact Information</a><br>
+<a href = 'education/'>Edit Education Section</a><br>
+<a href = 'work/'>Edit Work Section</a><br>
+<a href = 'skill/'>Edit Skills Section</a><br><br>
+
+<form method = 'POST' action='/resume/{{ pk }}/delete/'> {% csrf_token %}
+<input type='submit' value='Delete Resume' class='btn btn-default' />
+</form>
+</div>
+
+{% endblock content %}

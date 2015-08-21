@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action='save/' method='POST'>{% csrf_token %}
+{{form.as_p}}
+<input type='submit' value='{% if submit_btn %}{{ submit_btn }}{% else %}Submit{% endif %}' class='btn btn-default' />
+</form>
+
+<ul>
+{% for item in experience %}
+	<form method='POST'  action='experience/{{ item.id }}/delete/'>{% csrf_token %}
+    <li><a href='experience/{{ item.id }}/edit/'>{{ item.description }}</a>
+    	<input type='submit' value='Delete'/>
+    </li>
+    </form>
+{% endfor %}
+</ul>
+
+<a href = 'add/experience/'> Add an experience point </a>
+
+
+
+{% endblock content %}

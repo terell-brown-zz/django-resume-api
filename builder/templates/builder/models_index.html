@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<ul>
+{% for item in list %}
+	<form method='POST' action='{{ item.id }}/delete/'>{% csrf_token %}
+    <li><a href='{{ item.id }}/'>{{ item }}</a>		<input type='submit' value='Delete'/></li>
+    </form>
+{% endfor %}
+</ul>
+
+<a href = 'add'> Add more {{ item.getName }}</a>
+{% endblock content %}
