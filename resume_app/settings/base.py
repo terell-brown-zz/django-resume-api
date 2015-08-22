@@ -12,8 +12,8 @@ SECRET_KEY = 'kby933tj&bte3*_a+vah(z(&@qhk3mbv5^ru4w-q1d)px(pa16'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['stormy-depths-4606.herokuapp.com']
 LOGIN_URL ='/login/'
 LOGIN_REDIRECT_URL = '/resume/index'
 
