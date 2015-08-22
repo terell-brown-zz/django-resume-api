@@ -11,7 +11,8 @@ DATABASES['default'] =  dj_database_url.config()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://stormy-depths-4606.herokuapp.com/',
+'stormy-depths-4606.herokuapp.com/','www.stormy-depths-4606.herokuapp.com/']
 
 # # Static asset configuration
 # import os
