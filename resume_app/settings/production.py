@@ -1,6 +1,6 @@
 import os
 import dj_database_url
-from djano.conf import settings
+from django.conf import settings
 
 DEBUG = False
 TEMPLATE_DEBUG = True
