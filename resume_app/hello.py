@@ -1,96 +1,96 @@
-import os
+# import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'kby933tj&bte3*_a+vah(z(&@qhk3mbv5^ru4w-q1d)px(pa16'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-LOGIN_URL ='/login/'
-LOGIN_REDIRECT_URL = '/resume/index'
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Application definition
+# # Quick-start development settings - unsuitable for production
+# # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
-INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'builder',
-    'rest_framework',
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'kby933tj&bte3*_a+vah(z(&@qhk3mbv5^ru4w-q1d)px(pa16'
 
-)
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-)
+# ALLOWED_HOSTS = []
 
-ROOT_URLCONF = 'resume_app.urls'
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["/".join((BASE_DIR,"resume_app/templates")),
-                "/".join((BASE_DIR,"builder/templates"))],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
-
-WSGI_APPLICATION = 'resume_app.wsgi.application'
+# LOGIN_URL ='/login/'
+# LOGIN_REDIRECT_URL = '/resume/index'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+# # Application definition
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# INSTALLED_APPS = (
+#     'django.contrib.admin',
+#     'django.contrib.auth',
+#     'django.contrib.contenttypes',
+#     'django.contrib.sessions',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+#     'builder',
+#     'rest_framework',
+
+# )
+
+# MIDDLEWARE_CLASSES = (
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+#     'django.middleware.security.SecurityMiddleware',
+# )
+
+# ROOT_URLCONF = 'resume_app.urls'
+
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': ["/".join((BASE_DIR,"resume_app/templates")),
+#                 "/".join((BASE_DIR,"builder/templates"))],
+#         'APP_DIRS': True,
+#         'OPTIONS': {
+#             'context_processors': [
+#                 'django.template.context_processors.debug',
+#                 'django.template.context_processors.request',
+#                 'django.contrib.auth.context_processors.auth',
+#                 'django.contrib.messages.context_processors.messages',
+#             ],
+#         },
+#     },
+# ]
+
+# WSGI_APPLICATION = 'resume_app.wsgi.application'
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.8/topics/i18n/
+# # Database
+# # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'America/Toronto'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
+# # Internationalization
+# # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-STATIC_URL = '/static/'
+# LANGUAGE_CODE = 'en-us'
+
+# TIME_ZONE = 'America/Toronto'
+
+# USE_I18N = True
+
+# USE_L10N = True
+
+# USE_TZ = True
+
+
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+# STATIC_URL = '/static/'

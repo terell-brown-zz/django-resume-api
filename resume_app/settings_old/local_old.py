@@ -1,6 +1,6 @@
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,6 +29,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'builder',
     'rest_framework',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,8 +48,8 @@ ROOT_URLCONF = 'resume_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["/".join((BASE_DIR,"src/resume_app/templates")),
-                "/".join((BASE_DIR,"src/builder/templates"))],
+        'DIRS': ["/".join(BASE_DIR,"resume_app/templates"),
+                "/".join(BASE_DIR,"builder/templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
