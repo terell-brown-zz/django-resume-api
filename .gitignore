@@ -3,6 +3,9 @@ TODO.txt
 db.sqlite3
 resume_app/settings/local.py
 
+*.pyc
+static/
+
 #ignore sublime project
 *.sublime-project
 *.sublime-workspace

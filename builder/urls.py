@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^create/$', views.new_resume),
     url(r'^$', views.index, name='index'),
     
-]
- 
+] #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 urlpatterns = format_suffix_patterns(urlpatterns)
+

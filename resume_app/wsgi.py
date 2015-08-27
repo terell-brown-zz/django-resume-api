@@ -7,19 +7,24 @@ For more information on this file, see
 https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 """
 
-import os
+# import os
+
+# from django.core.wsgi import get_wsgi_application
+
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "resume_app.settings")
+
+# application = get_wsgi_application()
+
+# try:
+# 	from django.core.wsgi import get_wsgi_application
+# 	from dj_static import Cling
+
+# 	application = Cling(get_wsgi_application())
+
+# except:
+# 	pass
 
 from django.core.wsgi import get_wsgi_application
+from dj_static import Cling
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "resume_app.settings")
-
-application = get_wsgi_application()
-
-try:
-	from django.core.wsgi import get_wsgi_application
-	from dj_static import Cling
-
-	application = Cling(get_wsgi_application())
-
-except:
-	pass
+application = Cling(get_wsgi_application())

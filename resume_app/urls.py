@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from . import settings
 
 
 urlpatterns = [
@@ -55,3 +56,7 @@ urlpatterns = [
     url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^$', 'django.contrib.auth.views.login',{'template_name':'auth/login.html'},name='password_reset'),    
 ]
+
+# if settings.DEBUG:
+#     urlpatterns =+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+#     urlpatterns =+ static(settings.MEDIA_URL, document_root=settings.STATIC_MEDIA)

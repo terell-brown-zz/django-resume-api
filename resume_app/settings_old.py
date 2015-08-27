@@ -1,6 +1,6 @@
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -47,8 +47,8 @@ ROOT_URLCONF = 'resume_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["/".join((BASE_DIR,"src/resume_app/templates")),
-                "/".join((BASE_DIR,"src/builder/templates"))],
+        'DIRS': ["/".join((BASE_DIR,"resume_app/templates")),
+                "/".join((BASE_DIR,"builder/templates"))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,3 +93,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+#STATIC_ROOT =   '/home/ubuntu/Apps/Django/resume_app/src/static/static_root/'
+STATIC_ROOT =    os.path.join(BASE_DIR,'static','static_root')
+
+STATICFILES_DIRS = (
+    #'/home/ubuntu/Apps/Django/resume_app/src/static/static_dirs/',
+    os.path.join(BASE_DIR,'static','static_dirs'),
+)
+MEDIA_URL = '/media/'
+#MEDIA_ROOT = '/home/ubuntu/Apps/Django/resume_app/src/static/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'static','media')
