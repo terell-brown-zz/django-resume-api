@@ -8,6 +8,7 @@ from django.conf import settings
 
 DEBUG = False
 TEMPLATE_DEBUG = True
+#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "resume_app.settings")
 DATABASES = settings.DATABASES
 DATABASES['default'] =  dj_database_url.config()
 
