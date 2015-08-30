@@ -5,7 +5,7 @@ from .base import *
 
 print 'production'
 DEBUG = False
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 DATABASES = settings.DATABASES
 DATABASES['default'] =  dj_database_url.config()
