@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'kby933tj&bte3*_a+vah(z(&@qhk3mbv5^ru4w-q1d)px(pa16'
+SECRET_KEY = os.environ['SECRET_KEY']#
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -126,7 +126,7 @@ if PRODUCTION_MODE == True:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
     # # Allow all host headers
-    ALLOWED_HOSTS = ['localhost','stormy-depths-4606.herokuapp.com',]
+    ALLOWED_HOSTS = ['localhost','my-resume-app.herokuapp.com',]
     
     # # Static asset configuration
     # import os
