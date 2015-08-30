@@ -1,7 +1,7 @@
 import os
 import dj_database_url
 from django.conf import settings
-from .bse import *
+from .base import *
 
 print 'production'
 DEBUG = False
