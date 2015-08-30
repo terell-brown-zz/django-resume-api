@@ -2,7 +2,7 @@
 TODO.txt
 db.sqlite3
 resume_app/settings/local.py
-
+settings/local.py
 *.pyc
 static/
 
