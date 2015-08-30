@@ -1,9 +1,6 @@
-<!--{wqe% extends base.html %}
+{% extends 'base.html' %}
 
 {% block content %}
-
-
-{% endblock content %}-->
 <ul>
 {% for item in resumes %}
     <li><a href='/resume/{{item.id}}/edit'>{{ item.context }}</a></li>
@@ -11,4 +8,8 @@
 </ul>
 
 <a href = '/resume/create/'> Create a New Resume </a>
+
+
+{% endblock content %}
+
 

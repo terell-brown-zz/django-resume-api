@@ -1,26 +1,23 @@
-from django.shortcuts import render, get_object_or_404
-from builder.serializers import UserSerializer, ResumeSerializer, AboutSerializer, ContactSerializer
-from rest_framework import generics, permissions
-from django.contrib.auth.decorators import login_required
 from .models import Resume, Contact
-from django.http import HttpResponse
-from rest_framework.views import APIView
-from rest_framework import mixins
-
 from django.contrib.auth.models import User
+from builder.serializers import UserSerializer, ResumeSerializer, AboutSerializer 
+from forms import ResumeForm, AboutForm, ContactForm, EducationForm, SkillForm, ExperienceForm\
+,RegistrationForm
+
+from rest_framework import generics, permissions
+from rest_framework.views import APIView
+
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, render_to_response
+from django.core.urlresolvers import reverse
 from builder.permissions import IsOwnerOrReadOnly
 from rest_framework.response import Response
 
-# for forms
-from forms import ResumeForm, AboutForm, ContactForm, EducationForm, SkillForm, ExperienceForm\
-,RegistrationForm
-from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
-from django.shortcuts import render_to_response
+
 from helper import *
-from django.core.urlresolvers import reverse
-# for formset
-from django.forms.formsets import formset_factory
+
+
 
 
 def index(request):
