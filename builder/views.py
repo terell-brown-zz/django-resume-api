@@ -12,7 +12,8 @@ from builder.permissions import IsOwnerOrReadOnly
 from rest_framework.response import Response
 
 # for forms
-from forms import ResumeForm, AboutForm, ContactForm, EducationForm, SkillForm, ExperienceForm
+from forms import ResumeForm, AboutForm, ContactForm, EducationForm, SkillForm, ExperienceForm\
+,RegistrationForm
 from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
 from django.shortcuts import render_to_response
@@ -40,7 +41,7 @@ def models_index(request,resume_id,model):
     
     model_list = get_objects_by_model(resume_id, model)
     context = {'list': model_list}
-    return render(request, 'builder/models_index.html', context)
+    return render(request, 'builder/model_index.html', context)
 
 def models_add(request,resume_id, model):
     # renders empty form to add a new instance to model
@@ -99,26 +100,6 @@ def models_form_delete(request, model, pk):
         model.delete()
     return HttpResponseRedirect(reverse('resume_index'))
 
-
-### Views
-# def education_index(request,resume_id):
-#     # ret
-#     if not request.user == Resume.objects.get(pk=resume_id).user:
-#         return HttpResponseRedirect(reverse('resume_index'))
-
-#     list = Education.objects.filter(resume_id=resume_id)
-
-#     context = {'list': list}
-#     return render(request, 'builder/education_index.html', context)
-
-# def education_add(request,resume_id):
-
-#     model_form = get_form_by_selection(resume_id, 'education',False)
-#     context = {'form':model_form}
-
-#     return render(request,'builder/simple_form.html', context)
-
-
 ### Views for Work Model ###
 
 def work_edit(request,resume_id, pk):
@@ -132,7 +113,7 @@ def work_edit(request,resume_id, pk):
     experience_points = Experience.objects.filter(work_id=work_instance)
     context = {'form':model_form, 'experience':experience_points}
 
-    return render(request,'builder/experience_edit.html', context)
+    return render(request,'builder/model_edit.html', context)
 
 def work_save(request, resume_id, pk):
     # saves data to existing work instance using modified form data
@@ -162,7 +143,7 @@ def experience_edit(request,resume_id, work_id, pk):
     form = ExperienceForm(instance=exp_instance)
     context = {'form': form}
 
-    return render(request,'builder/experience_form.html', context)
+    return render(request,'builder/model_form.html', context)
 
 def experience_update(request, resume_id, work_id, pk):
     # saves data to existing Experience model instance using modified form data
@@ -205,7 +186,7 @@ def experience_add(request, resume_id, work_id):
         context.update(csrf(request))
         context['form'] = form
 
-        return render_to_response('builder/experience_add.html',context)
+        return render_to_response('builder/model_add.html',context)
 
 
 ### Views for Resume Model ###
@@ -268,6 +249,20 @@ def update_resume(request,pk, model):
 
     return render(request,'builder/simple_form.html', context)
 
+def registration_view(request):
+    form = RegistrationForm(request.POST or None)
+    btn = 'Join'
+
+    if form.is_valid():
+        new_user = form.save(commit=False)
+        new_user.save()
+        return HttpResponseRedirect("/")
+
+    context = {
+        "form": form,
+        "submit_btn": btn,
+    }
+    return render(request, 'builder/simple_form.html', context)
 
 # API VIEWS
 
@@ -301,10 +296,3 @@ class AboutList(APIView):
         about = Resume.objects.filter(user=current_user, pk=pk).first().about
         serialized_abouts = AboutSerializer(about,many=True)
         return Response(serialized_abouts.data)
-
-# class ModelList(APIView):
-    
-#     def get(self,request, model, resume_id, format=None):
-#         print resume_id
-#         serialized_model = get_serialized_model(request, model, resume_id) 
-#         return Response(serialized_model.data)

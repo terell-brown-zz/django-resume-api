@@ -54,6 +54,7 @@ urlpatterns = [
     url(r'^login/$','django.contrib.auth.views.login',{'template_name':'./auth/login.html'},name='password_reset'),
     url(r'^logout/$','django.contrib.auth.views.logout',{'next_page': '/'}),
     url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^register/', 'builder.views.registration_view', name='registration'),  
     url(r'^$', 'django.contrib.auth.views.login',{'template_name':'auth/login.html'},name='password_reset'),    
 ]
 
