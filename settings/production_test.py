@@ -1,11 +1,11 @@
 import os
 import dj_database_url
 from django.conf import settings
-from .bse import *
-
-print 'production'
+from .base import *
 DEBUG = False
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
+
+SECRET_KEY = os.environ['SECRET_KEY']
 
 DATABASES = settings.DATABASES
 DATABASES['default'] =  dj_database_url.config()
