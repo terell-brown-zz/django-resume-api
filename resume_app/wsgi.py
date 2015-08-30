@@ -29,6 +29,5 @@ from django.core.wsgi import get_wsgi_application
 from dj_static import Cling
 
 
-#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "resume_app.settings")
 application = get_wsgi_application()
-
