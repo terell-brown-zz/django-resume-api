@@ -126,8 +126,8 @@ if PRODUCTION_MODE == True:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
     # # Allow all host headers
-    #ALLOWED_HOSTS = ['localhost','stormy-depths-4606.herokuapp.com',]
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['localhost','stormy-depths-4606.herokuapp.com',]
+    
     # # Static asset configuration
     # import os
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
