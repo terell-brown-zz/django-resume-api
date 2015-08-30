@@ -6,10 +6,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']#
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -79,13 +75,9 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'America/Toronto'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -93,43 +85,37 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATIC_ROOT =   '/home/ubuntu/Apps/Django/resume_app/src/static/static_root/'
 STATIC_ROOT =    os.path.join(BASE_DIR,'static','static_root')
 
 STATICFILES_DIRS = (
-    #'/home/ubuntu/Apps/Django/resume_app/src/static/static_dirs/',
+
     os.path.join(BASE_DIR,'static','static_dirs'),
 )
 MEDIA_URL = '/media/'
-#MEDIA_ROOT = '/home/ubuntu/Apps/Django/resume_app/src/static/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR,'static','media')
 
 PRODUCTION_MODE = True
-if PRODUCTION_MODE == True:
-    import os
+if PRODUCTION_MODE:
     import dj_database_url
     from django.conf import settings
 
-    import os
     
     DEBUG = False
     TEMPLATE_DEBUG = True
-    #os.environ.setdefault("DJANGO_SETTINGS_MODULE", "resume_app.settings")
-    DATABASES = settings.DATABASES
 
-    ## service error (500)
+    SECRET_KEY = os.environ['SECRET_KEY']
+
+    DATABASES = settings.DATABASES
     DATABASES['default'] =  dj_database_url.config()
 
-    print DATABASES
-    print DATABASES['default']
     # # Honor the 'X-Forwarded-Proto' header for request.is_secure()
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
     # # Allow all host headers
     ALLOWED_HOSTS = ['localhost','my-resume-app.herokuapp.com',]
     
-    # # Static asset configuration
-    # import os
+    # Static asset configuration
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     STATIC_ROOT = 'staticfiles'
     STATIC_URL = '/static/'
