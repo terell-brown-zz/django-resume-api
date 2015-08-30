@@ -1,7 +1,7 @@
 # Files to ignore
 TODO.txt
 db.sqlite3
-resume_app/settings/local.py
+resume_app/settings/
 settings/local.py
 *.pyc
 static/
