@@ -9,6 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 DEBUG = True
 
 ALLOWED_HOSTS = []
+SECRET_KEY = os.environ['SECRET_KEY']
 
 LOGIN_URL ='/login/'
 LOGIN_REDIRECT_URL = '/resume/index'
@@ -63,12 +64,12 @@ WSGI_APPLICATION = 'resume_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Internationalization
@@ -95,12 +96,18 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'static','media')
 
-PRODUCTION_MODE = True
+import dj_database_url
+from django.conf import settings
+DATABASES = settings.DATABASES
+DATABASES['default'] =  dj_database_url.config()
+
+
+PRODUCTION_MODE = False
 if PRODUCTION_MODE:
     import dj_database_url
     from django.conf import settings
 
-    
+    print 'production'
     DEBUG = False
     TEMPLATE_DEBUG = True
 

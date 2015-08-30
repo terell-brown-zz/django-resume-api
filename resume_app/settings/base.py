@@ -2,17 +2,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'kby933tj&bte3*_a+vah(z(&@qhk3mbv5^ru4w-q1d)px(pa16'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+SECRET_KEY = os.environ['SECRET_KEY']
 
 LOGIN_URL ='/login/'
 LOGIN_REDIRECT_URL = '/resume/index'
@@ -63,43 +53,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'resume_app.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'America/Toronto'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
-
-STATIC_URL = '/static/'
-#STATIC_ROOT =   '/home/ubuntu/Apps/Django/resume_app/src/static/static_root/'
-STATIC_ROOT =    os.path.join(BASE_DIR,'static','static_root')
-
-STATICFILES_DIRS = (
-    #'/home/ubuntu/Apps/Django/resume_app/src/static/static_dirs/',
-    os.path.join(BASE_DIR,'static','static_dirs'),
-)
-MEDIA_URL = '/media/'
-#MEDIA_ROOT = '/home/ubuntu/Apps/Django/resume_app/src/static/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'static','media')

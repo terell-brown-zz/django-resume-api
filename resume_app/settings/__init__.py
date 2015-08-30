@@ -1,13 +1,14 @@
 from .base import *
 
 try:
- 	from .local import *
+ 	from .new import *
  	live = False
+ 	print 'l_new'
 
 except:
 	live = True
 
 if live:
-	from .production import *
-
+	from .w import *
+	#print 'production'
 
