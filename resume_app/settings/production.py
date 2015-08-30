@@ -1,8 +1,4 @@
 import os
-import dj_database_url
-from django.conf import settings
-
-import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -108,30 +104,36 @@ MEDIA_URL = '/media/'
 #MEDIA_ROOT = '/home/ubuntu/Apps/Django/resume_app/src/static/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'static','media')
 
+PRODUCTION_MODE = True
+if PRODUCTION_MODE == True:
+    import os
+    import dj_database_url
+    from django.conf import settings
 
+    import os
+    
+    DEBUG = False
+    TEMPLATE_DEBUG = True
+    #os.environ.setdefault("DJANGO_SETTINGS_MODULE", "resume_app.settings")
+    DATABASES = settings.DATABASES
 
+    ## service error (500)
+    DATABASES['default'] =  dj_database_url.config()
 
-DEBUG = False
-TEMPLATE_DEBUG = True
-#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "resume_app.settings")
-DATABASES = settings.DATABASES
-DATABASES['default'] =  dj_database_url.config()
+    print DATABASES
+    print DATABASES['default']
+    # # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # # Allow all host headers
+    #ALLOWED_HOSTS = ['localhost','stormy-depths-4606.herokuapp.com',]
+    ALLOWED_HOSTS = []
+    # # Static asset configuration
+    # import os
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    STATIC_ROOT = 'staticfiles'
+    STATIC_URL = '/static/'
 
-# Allow all host headers
-ALLOWED_HOSTS = ['stormy-depths-4606.herokuapp.com',]
-
-# Static asset configuration
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
-
-
+    STATICFILES_DIRS = (
+         os.path.join(BASE_DIR, 'static'),
+    )
