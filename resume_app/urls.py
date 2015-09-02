@@ -48,6 +48,7 @@ urlpatterns = [
     url(r'^resume/(?P<pk>[0-9]+)/edit/(?P<model>.*)/', 'builder.views.update_resume'),
     url(r'^resume/', include('builder.urls')),
 
+    url(r'^api/user/', include('builder.urls')),   
     url(r'^api/', include('builder.urls')),
 
     # authentication
@@ -56,6 +57,7 @@ urlpatterns = [
     url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^register/', 'builder.views.registration_view', name='registration'),  
     url(r'^$', 'django.contrib.auth.views.login',{'template_name':'auth/login.html'},name='password_reset'),    
+    url(r'^rest-auth/', include('rest_auth.urls')),
 ]
 
 # if settings.DEBUG:
