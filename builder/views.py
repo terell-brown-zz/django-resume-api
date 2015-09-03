@@ -268,6 +268,13 @@ class UserDetail (generics.RetrieveAPIView):
     serializer_class = UserSerializer
     permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly)
 
+class UserList (generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = 'username'
+    permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly)
+
+
 class ResumeList(APIView):
     
     def get(self,request, pk, format=None):
