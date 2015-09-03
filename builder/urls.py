@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^v1/resume/(?P<pk>[0-9]+)/contact', views.ContactList.as_view()),
     url(r'^v1/resume/(?P<pk>[0-9]+)/about', views.AboutList.as_view()),
     url(r'^v1/resume/(?P<pk>[0-9]+)/', views.ResumeList.as_view()),
+    url(r'^v1/resume/(?P<context>.*)/', views.ResumeList.as_view()),
     url(r'^v1/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
     url(r'^v1/(?P<username>.*)/$', views.UserList.as_view()),
 	url(r'^index/$', views.index, name='resume_index'),

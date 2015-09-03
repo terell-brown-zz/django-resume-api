@@ -276,10 +276,11 @@ class UserList (generics.RetrieveAPIView):
 
 
 class ResumeList(APIView):
+
     
-    def get(self,request, pk, format=None):
+    def get(self,request, context, format=None):
         current_user = request.user
-        resume = Resume.objects.filter(user=current_user, pk=pk)
+        resume = Resume.objects.filter(user=current_user, context=context)
         serialized_resumes = ResumeSerializer(resume,many=True)
         return Response(serialized_resumes.data)
 

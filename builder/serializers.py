@@ -3,7 +3,7 @@ from models import *
 from django.contrib.auth.models import User
 
 class UserSerializer(serializers.ModelSerializer):
-    resumes = serializers.PrimaryKeyRelatedField(many=True,queryset = Resume.objects.all())
+    resumes = serializers.SlugRelatedField(many=True,queryset = Resume.objects.all(),slug_field='context')
     
     class Meta(object):
         model = User
